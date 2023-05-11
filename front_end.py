@@ -41,20 +41,19 @@ class MyApplication(QWidget):
         self.table.resizeColumnsToContents()
 
     def init_cpv_description_layout(self):
-        hbox_layout = QHBoxLayout()
-        hbox_layout.setContentsMargins(0, 0, 0, 0)
-
-        hbox_widget = QWidget()
-        hbox_widget.setFixedWidth(800)
-        hbox_widget.setFixedHeight(50)
-        hbox_widget.setLayout(hbox_layout)
+        self.hbox_layout = QHBoxLayout()
+        self.hbox_layout.setContentsMargins(0, 0, 0, 0)
 
         text_edit_cpv = QTextEdit()
         text_edit_cpv.setPlaceholderText("CPV")
         text_edit_description = QTextEdit()
         text_edit_description.setPlaceholderText("Description")
-        hbox_layout.addWidget(text_edit_cpv)
-        hbox_layout.addWidget(text_edit_description)
+        self.hbox_layout.addWidget(text_edit_cpv)
+        self.hbox_layout.addWidget(text_edit_description)
+        self.hbox_widget = QWidget()
+        self.hbox_widget.setFixedWidth(800)
+        self.hbox_widget.setFixedHeight(50)
+        self.hbox_widget.setLayout(self.hbox_layout)
 
     def init_buttons(self):
         self.button1 = QPushButton("Search")
@@ -64,6 +63,7 @@ class MyApplication(QWidget):
     def init_layout(self):
         main_layout = QVBoxLayout()
         main_layout.addWidget(self.table)
+        main_layout.addWidget(self.hbox_widget)
         main_layout.addWidget(self.button1)
         main_layout.addWidget(self.label)
         main_layout.addWidget(self.button2)
